@@ -4,12 +4,19 @@
   //Bug 2: Removed -1 from basePercent return
   //Bug 3: Rounded up the base salary and bonus calculation to return an integer
 
-var arrayAtticus = ["Atticus", "2405", "47000", 3];
-var arrayJem = ["Jem", "62347", "63500", 4];
-var arrayBoo = ["Boo", "11435", "54000", 3];
-var arrayScout = ["Scout", "6243", "74750", 5];
+function Employee(employeeName, employeeNumber, baseSalary, reviewScore) {
+  this.employeeName = employeeName;
+  this.employeeNumber = employeeNumber;
+  this.baseSalary = baseSalary;
+  this.reviewScore = reviewScore;
+}
 
-var array = [arrayAtticus, arrayJem, arrayBoo, arrayScout];
+var atticus = new Employee ("Atticus", "2405", "47000", 3);
+var jem =  new Employee ("Jem", "62347", "63500", 4);
+var boo =  new Employee ("Boo", "11435", "54000", 3);
+var scout =  new Employee ("Scout", "6243", "74750", 5);
+
+var array = [atticus, jem, boo, scout];
 
 //Create variables used to write to the DOM
 var newEl, newText, position;
@@ -30,13 +37,11 @@ for(var i = 0; i < array.length; i++){
 function calculateSTI(array){
   var newArray = [];
 
-  newArray[0] = " " + array[0];
+  newArray[0] = " " + array.employeeName;
 
-
-
-  var employeeNumber = array[1];
-  var baseSalary = array[2];
-  var reviewScore = array[3];
+  var employeeNumber = array.employeeNumber;
+  var baseSalary = array.baseSalary;
+  var reviewScore = array.reviewScore;
 
   var bonus = getBaseSTI(reviewScore) + getYearAdjustment(employeeNumber) - getIncomeAdjustment(baseSalary);
   if(bonus > 0.13){
